@@ -20,7 +20,7 @@ As I mentioned previously, I couldn't change my username on Hugging Face, theref
 | BC5CDR-Chemical |[model_name_or_path]() | [model_name_or_path]()|
 | BioRED-Chem |[model_name_or_path]()| [model_name_or_path]() |
 
-## Usage example for WELT finetuning
+## Usage example for WeLT finetuning
 This is an example of fine-tuning `NCBI-Disease` over `BioBERT` using `WeLT` weight scheme
 ```bash
 
@@ -53,7 +53,7 @@ python run_weight_scheme.py \
     --do_predict \
     --overwrite_output_dir
   ```
-## Usage example for predicting disease entities using WELT
+## Usage example for predicting disease entities using WeLT
 This is an example of fine-tuning `NCBI-Disease` over `BioBERT` using an `WELT` fine-tuned model on HF
 ```bash
 cd named-entity-recognition
