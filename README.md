@@ -16,7 +16,7 @@ Note: To install the appropriate torch, follow the [download instructions](https
 
 **Data & Evaluation code Download** \
 To directly download NER datasets for fine-tuning models from scratch, use [`download.sh`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/download.sh) or manually download them via this [link](https://drive.google.com/file/d/1nHH3UYpQImQhBTei5HiTcAAFBvsfaBw0/view) in main directory, `unzip datasets.zip` and `rm -r datasets.zip`
-Same instructions are used for evaluation code.
+The same instructions are used for the evaluation code.
 
 **Data Pre-processing** \
 We adapted the [`preprocessing.sh`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/preprocess.sh) from [BioBERT](https://github.com/dmis-lab/biobert) to include [BioRED](https://ftp.ncbi.nlm.nih.gov/pub/lu/BioRED/)
@@ -32,19 +32,9 @@ Our experimental work focused on BioBERT(mixed/continual pre-trained language mo
 |BioBERT| [model_name_or_path](https://huggingface.co/dmis-lab/biobert-v1.1)|
 |PubMedBERT| [model_name_or_path](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract)|
 
+### 1. WeLT fine-tuning
 
-### 1.1 WELT equations
-These equations are applied to "O" (major class), "B" & "I" (minor classes) as a weighting scheme to handle class imbalance.
-  $$CW_c= \textstyle 1- \dfrac{ClassDistibution_c}{TotalOfClassesDistributions_t}$$ \
-  $$\text where \ c= |O| or |B| or|I| \text{and} \ t=|O|+|B|+|I|$$ 
-  $$WV= \sum_{c=1}^{t} CW_c$$\
-  $$\sigma \vec{(WV)} i=\dfrac {e^{WV_i}}{\sum\limits_{c=1}^{t} e^{WV_c}}$$\
- $$loss(x,class)=\textstyle \sigma \vec{(WV)} i [class] \Theta$$ \
- $$where,\Theta= -x[class]+\log{\sum_j exp(x[j])}$$  
-
-### 1.2 WELT fine-tuning
-
-We have adapted [BioBERT-run_ner.py](https://github.com/dmis-lab/biobert-pytorch/blob/master/named-entity-recognition/run_ner.py) to develop cost-senstive trainer in [run_weight_scheme.py](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L94-103) that extends `Trainer` class to `WeightedLossTrainer` and override [`compute_loss`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L96) function to include [`WELT`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L129-142) in [`weighted Cross-Entropy loss function`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L101)
+We have adopted [BioBERT-run_ner.py](https://github.com/dmis-lab/biobert-pytorch/blob/master/named-entity-recognition/run_ner.py) to develop a cost-sensitive trainer in [run_weight_scheme.py](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L94-103) that extends `Trainer` class to `WeightedLossTrainer` and override [`compute_loss`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L96) function to include [`WELT`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L129-142) in [`weighted Cross-Entropy loss function`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L101)
 
 ### 2. Building XML files
 After fine-tuning BERT models, we recognize chemical & disease entites via [`ner.py`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/ner.py). The output files are in [predicted path directory](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/predictedpath)
