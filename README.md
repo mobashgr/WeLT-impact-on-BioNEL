@@ -51,7 +51,7 @@ Track 2 - NLM-CHEM track Full-text Chemical Identification and Indexing in PubMe
 - [Evaluating predicted WELT disease example](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/README.md#Usage-example-for-strict-evaluation-of-NCBI-Disease-predicted-file-using-WELT)
 
  ## Citation
- Manuscript is in preparation (TBD)
+ The manuscript is in preparation (TBD)
  ## Authors
  Authors: Ghadeer Mobasher*, Pedro Ruas, Francisco M. Couto, Olga Krebs, Michael Gertz and Wolfgang Müller
 ## Acknowledgment
