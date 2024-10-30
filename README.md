@@ -22,7 +22,7 @@ The same instructions are used for the evaluation code.
 We adapted the [`preprocessing.sh`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/preprocess.sh) from [BioBERT](https://github.com/dmis-lab/biobert) to include [BioRED](https://ftp.ncbi.nlm.nih.gov/pub/lu/BioRED/)
 
 ## Reproducing Paper's results
-We  conducted the experiments on two different BERT models using the WELT weighting scheme. We have compared WELT against the corresponding traditional fine-tuning approaches(i.e. BioBERT fine-tuning). We provide an explanation of the [WELT fine-tuning approach](#12-welt-fine-tuning) .
+We  conducted the experiments on two different BERT models using the WELT weighting scheme. We have compared WELT against the corresponding traditional fine-tuning approaches(i.e. BioBERT fine-tuning). We explain the [WELT fine-tuning approach](#12-welt-fine-tuning).
 We provide all the [fine-tuned models on Huggingface, an example of fine-tuning from scratch using WELT, and an example of predicting and evaluating disease entities](#Quick-Links).
 
 ### 1. Fine-tuning BERT Models 
@@ -45,10 +45,10 @@ Track 2 - NLM-CHEM track Full-text Chemical Identification and Indexing in PubMe
 
 
 ## Quick Links
-- [Fine-tuned models available on HF ](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/README.md#Fine-tuned-HF-:hugs:)
-- [Fine-tuning from scratch example](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/README.md#Usage-example-for-WELT-finetuning) 
-- [Predicting disease entities using WELT example](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/README.md#Usage-example-for-predicting-disease-entities-using-WELT)
-- [Evaluating predicted WELT disease example](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/README.md#Usage-example-for-strict-evaluation-of-NCBI-Disease-predicted-file-using-WELT)
+- [Fine-tuned models available on HF ](https://github.com/mobashgr/WeLT-impact-on-BioNEL/blob/main/named-entity-recognition/README.md#Fine-tuned-HF-:hugs:)
+- [Fine-tuning from scratch example](https://github.com/mobashgr/WeLT-impact-on-BioNEL/blob/main/named-entity-recognition/README.md#Usage-example-for-WELT-finetuning) 
+- [Predicting disease entities using WELT example](https://github.com/mobashgr/WeLT-impact-on-BioNEL/blob/main/named-entity-recognition/README.md#Usage-example-for-predicting-disease-entities-using-WELT)
+- [Evaluating predicted WELT disease example](https://github.com/mobashgr/WeLT-impact-on-BioNEL/blob/main/named-entity-recognition/README.md#Usage-example-for-strict-evaluation-of-NCBI-Disease-predicted-file-using-WELT)
 
  ## Citation
  The manuscript is in preparation (TBD)
