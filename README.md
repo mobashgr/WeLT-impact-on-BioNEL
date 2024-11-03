@@ -32,11 +32,11 @@ Our experimental work focused on BioBERT(mixed/continual pre-trained language mo
 |BioBERT| [model_name_or_path](https://huggingface.co/dmis-lab/biobert-v1.1)|
 |PubMedBERT| [model_name_or_path](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract)|
 
-### 1. WeLT fine-tuning
+### 2. WeLT fine-tuning
 
 We have adopted [BioBERT-run_ner.py](https://github.com/dmis-lab/biobert-pytorch/blob/master/named-entity-recognition/run_ner.py) to develop a cost-sensitive trainer in [run_weight_scheme.py](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L94-103) that extends `Trainer` class to `WeightedLossTrainer` and override [`compute_loss`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L96) function to include [`WELT`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L129-142) in [`weighted Cross-Entropy loss function`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/run_weight_scheme.py#L101)
 
-### 2. Building XML files
+### 3. Building XML files
 After fine-tuning BERT models, we recognize chemical & disease entites via [`ner.py`](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/named-entity-recognition/ner.py). The output files are in [predicted path directory](https://github.com/mobashgr/Re-scaling-class-distribution-for-fine-tuning-BERT-based-models/blob/main/predictedpath)
 
 **Evaluation** \
